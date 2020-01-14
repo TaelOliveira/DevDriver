@@ -1,5 +1,7 @@
 {
   "name": "DevDriver",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>732858171754-gl4v57g6e2emje106cjpmumm1qpj5t6p.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.732858171754-gl4v57g6e2emje106cjpmumm1qpj5t6p</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBGtdW2bBuCO775zt5BZ9ayCMwjlQ51-Ao</string>
+	<key>GCM_SENDER_ID</key>
+	<string>732858171754</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.tael.devdriver</string>
+	<key>PROJECT_ID</key>
+	<string>devdriver-7b9c2</string>
+	<key>STORAGE_BUCKET</key>
+	<string>devdriver-7b9c2.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:732858171754:ios:0c8ef0c960ce3cf32e6513</string>
+	<key>DATABASE_URL</key>
+	<string>https://devdriver-7b9c2.firebaseio.com</string>
+</dict>
+</plist>

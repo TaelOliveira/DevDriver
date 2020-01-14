@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "732858171754",
+    "firebase_url": "https://devdriver-7b9c2.firebaseio.com",
+    "project_id": "devdriver-7b9c2",
+    "storage_bucket": "devdriver-7b9c2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:732858171754:android:714509f5164526032e6513",
+        "android_client_info": {
+          "package_name": "com.tael.devdriver"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "732858171754-oae4imdc2ul7l5k9pn09futn5m6lj3f7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBE5teFBnh6rLccUA_1CKUys2zlx73-hpM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "732858171754-oae4imdc2ul7l5k9pn09futn5m6lj3f7.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "732858171754-gl4v57g6e2emje106cjpmumm1qpj5t6p.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.tael.devdriver"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

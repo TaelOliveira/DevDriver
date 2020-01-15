@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MenuController, ToastController, AlertController } from '@ionic/angular';
+import { MenuController, ToastController, AlertController, LoadingController } from '@ionic/angular';
 import { DatabaseService } from '../database.service';
 import { UploadPictureService } from '../uploadpicture.service';
 import { Subject } from 'rxjs';
@@ -15,6 +15,7 @@ export class ProfilePage implements OnInit {
 
   constructor(
     public menu: MenuController,
+    public loadingController: LoadingController,
     public db: DatabaseService,
     public toastController: ToastController,
     private alertController: AlertController,
@@ -22,6 +23,8 @@ export class ProfilePage implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.presentLoading();
+    
     const userEmail = this.db.userDetails().email;
     this.user = this.db.collection$('userProfile', ref =>
       ref
@@ -64,7 +67,7 @@ export class ProfilePage implements OnInit {
         {
           text: 'Cancel',
           handler: data => {
-            this.presentToast("Name and last name not updated!", false, 'bottom', 3000);
+            this.presentToast("Name and last name not updated!", true, 'bottom', 3000);
           }
         },
         {
@@ -78,10 +81,10 @@ export class ProfilePage implements OnInit {
             lastNameInput.addEventListener('keyup', () => lastName$.next(lastNameInput.value));
             if (firstNameInput.value && lastNameInput.value) {
               this.db.updateName(data.firstName, data.lastName);
-              this.presentToast("Name and last name updated!", false, 'bottom', 3000);
+              this.presentToast("Name and last name updated!", true, 'bottom', 3000);
             }
             else {
-              this.presentToast("Name and last name not updated!", false, 'bottom', 3000);
+              this.presentToast("Name and last name not updated!", true, 'bottom', 3000);
             }
           },
         },
@@ -110,6 +113,16 @@ export class ProfilePage implements OnInit {
       ],
     });
     await alert.present();
+  }
+
+  async presentLoading() {
+    const loading = await this.loadingController.create({
+      message: 'Please wait...',
+      duration: 2000
+    });
+    await loading.present();
+    const { role, data } = await loading.onDidDismiss();
+    console.log('Loading dismissed!');
   }
 
 

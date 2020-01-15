@@ -20,6 +20,11 @@ const routes: Routes = [
     path: 'profile',
     loadChildren: () => import('./profile/profile.module').then( m => m.ProfilePageModule),
     canActivate: [AuthGuard]
+  },
+  {
+    path: 'money',
+    loadChildren: () => import('./money/money.module').then( m => m.MoneyPageModule),
+    canActivate: [AuthGuard]
   }
 ];
 @NgModule({

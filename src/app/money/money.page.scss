@@ -1,0 +1,32 @@
+ion-content {
+    --ion-background-color: black;
+
+    form {
+        ion-list {
+            padding: 10px;
+            ion-label {
+                color: var(--ion-color-primary);
+                font-size: x-large;
+            }
+
+            ion-input {
+                color: white;
+                font-size: larger;
+            }
+
+            h2 {
+                color: red;
+                font-family: Arial, Helvetica, sans-serif;
+            }
+
+            ion-datetime {
+                color: white;
+            }
+        }
+    }
+}
+
+.myAlert{
+    background-color: black;
+    color: green;
+}

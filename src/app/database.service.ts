@@ -17,7 +17,16 @@ export class DatabaseService {
   constructor(
     private afs:AngularFirestore,
     public toastController: ToastController,
-  ) { }
+  ) { 
+    firebase.auth().onAuthStateChanged(user => {
+      if (user) {
+        this.currentUser = user;
+        this.userProfile = firebase.firestore().doc(`/userProfile/${user.uid}`);
+      }
+    });
+    this.currentUser = firebase.auth().currentUser;
+    this.userProfile = firebase.firestore().doc(`/userProfile/${this.currentUser}`);
+  }
 
   collection$(path, query?){
     return this.afs
@@ -79,6 +88,10 @@ export class DatabaseService {
     return this.userProfile.update({ firstName, lastName });
   }
 
+  updatePhotoURL(photoURL: string){
+    return this.userProfile.update({ photoURL });
+  }
+
   updatePassword(newPassword: string, oldPassword: string): Promise<any> {
     const credential: firebase.auth.AuthCredential = firebase.auth.EmailAuthProvider.credential(
       this.currentUser.email,
@@ -90,12 +103,12 @@ export class DatabaseService {
       .then(() => {
         this.currentUser.updatePassword(newPassword).then(() => {
           console.log('Password Changed');
-          this.presentToast('Password updated', false, 'bottom', 2000);
+          this.presentToast('Password updated', true, 'bottom', 3000);
         });
       })
       .catch(error => {
         console.error(error);
-        this.presentToast('Password not updated', false, 'bottom', 2000);
+        this.presentToast('Password not updated', false, 'bottom', 3000);
       });
   }
 

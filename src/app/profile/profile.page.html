@@ -17,4 +17,57 @@
 
   <ion-button (click)="uploadPicture.openImagePicker()" color="secondary" expand="full">Upload a Picture</ion-button>
 
+  <ion-list>
+
+    <ion-item *ngFor="let user of user | async">
+      <ion-item (click)="updateName()">
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <ion-label class="myClass1 ion-text-start">Name</ion-label>
+            </ion-col>          
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-label class="myClass2 ion-text-start">{{user?.firstName}} {{user?.lastName}}</ion-label>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <span class="myClass3 ion-text-end">Tap here to edit.</span>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-item>
+    </ion-item>
+
+    <ion-item *ngFor="let user of user | async">
+      <ion-item>
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <ion-label class="myClass1 ion-text-start">Email</ion-label>
+            </ion-col>          
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-label class="myClass2 ion-text-start">{{user.email}}</ion-label>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-item>
+    </ion-item>
+
+    <ion-item (click)="updatePassword()">
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <span class="myClass3 ion-text-start">Tap here to edit password.</span>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+
+  </ion-list>
+
 </ion-content>

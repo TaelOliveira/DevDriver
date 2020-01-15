@@ -7,6 +7,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { ImagePicker } from '@ionic-native/image-picker/ngx';
 import { WebView } from '@ionic-native/ionic-webview/ngx';
 import { LoadingController, ToastController } from '@ionic/angular';
+import { DatabaseService } from './database.service';
 
 @Injectable({
   providedIn: 'root'
@@ -21,6 +22,7 @@ export class UploadPictureService {
     private imagePicker: ImagePicker,
     public loadingController: LoadingController,
     public toastController: ToastController,
+    public db: DatabaseService,
     private webview: WebView,
   ) { }
 
@@ -63,6 +65,7 @@ export class UploadPictureService {
     this.uploadImage(image_src, randomId)
       .then(photoURL => {
         this.image = photoURL;
+        this.db.updatePhotoURL(photoURL);
         loading.dismiss();
         toast.present();
       }, err => {

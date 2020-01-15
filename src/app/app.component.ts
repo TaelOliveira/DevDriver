@@ -20,6 +20,11 @@ export class AppComponent {
       url: '/profile',
       icon: 'person'
     },
+    {
+      title: 'Money',
+      url: '/money',
+      icon: 'cash'
+    },
   ];
 
   user:any;
@@ -46,6 +51,7 @@ export class AppComponent {
       if( user ) {
         this.appPages = [
           {title: 'Profile' , url: '/profile', icon: 'person'},
+          {title: 'Money' , url: '/money', icon: 'cash'},
         ]
         this.user = user;
       }

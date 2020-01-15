@@ -21,6 +21,7 @@
     "@angular/platform-browser-dynamic": "~8.1.2",
     "@angular/router": "~8.1.2",
     "@ionic-native/core": "^5.0.0",
+    "@ionic-native/date-picker": "^5.19.1",
     "@ionic-native/image-picker": "^5.19.1",
     "@ionic-native/ionic-webview": "^5.19.1",
     "@ionic-native/splash-screen": "^5.0.0",
@@ -28,6 +29,7 @@
     "@ionic/angular": "^4.7.1",
     "cordova-android": "^8.1.0",
     "cordova-ios": "^5.1.1",
+    "cordova-plugin-datepicker": "^0.9.3",
     "cordova-plugin-telerik-imagepicker": "^2.3.3",
     "core-js": "^2.5.4",
     "firebase": "^7.6.2",
@@ -78,7 +80,8 @@
       "cordova-plugin-ionic-keyboard": {},
       "cordova-plugin-telerik-imagepicker": {
         "PHOTO_LIBRARY_USAGE_DESCRIPTION": " "
-      }
+      },
+      "cordova-plugin-datepicker": {}
     },
     "platforms": [
       "android",

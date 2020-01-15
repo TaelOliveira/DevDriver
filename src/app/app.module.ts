@@ -17,6 +17,7 @@ import { RegisterPage } from './register/register.page';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ImagePicker } from '@ionic-native/image-picker/ngx';
 import { WebView } from '@ionic-native/ionic-webview/ngx';
+import { DecimalPipe } from '@angular/common';
 
 @NgModule({
   declarations: [AppComponent, RegisterPage],
@@ -36,6 +37,7 @@ import { WebView } from '@ionic-native/ionic-webview/ngx';
     ReactiveFormsModule,
     StatusBar,
     SplashScreen,
+    DecimalPipe,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

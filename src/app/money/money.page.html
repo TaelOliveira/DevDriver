@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-toolbar color="dark">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+      <ion-title>Money</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <form [formGroup]="calculationForm">
+    <ion-list>
+      <ion-item>
+        <ion-label position="stacked">Date</ion-label>
+        <ion-datetime formControlName="date" placeholder="Select Date"></ion-datetime>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Total Kms of the day</ion-label>
+        <ion-input formControlName="kms" type="number" placeholder="12315" name="kms"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Total hours of the day</ion-label>
+        <ion-input formControlName="hours" type="number" placeholder="10" name="hours"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Total Earnings of the day</ion-label>
+        <ion-input formControlName="earnings" type="number" placeholder="554.78" name="earnings"></ion-input>
+      </ion-item>
+      <h2>Expenses</h2>
+      <ion-item>
+        <ion-label position="stacked">Petrol</ion-label>
+        <ion-input formControlName="petrol" type="number" placeholder="54.44" name="petrol"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Tolls</ion-label>
+        <ion-input formControlName="tolls" type="number" placeholder="25.67" name="tolls"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Other</ion-label>
+        <ion-input formControlName="other" type="number" placeholder="12.45" name="other"></ion-input>
+      </ion-item>
+      <div class="ion-padding-top">
+        <ion-button [disabled]="!calculationForm.valid" expand="block" type="submit" color="success" (click)="showOnScreen()">Show on screen</ion-button>
+      </div>
+      <div class="ion-padding-top">
+        <ion-button [disabled]="!calculationForm.valid" type="button" expand="block" color="primary" (click)="addToList()">Add to List</ion-button>
+      </div>
+    </ion-list>
+  </form>
+
+</ion-content>

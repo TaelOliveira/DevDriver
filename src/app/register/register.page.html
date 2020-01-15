@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar color="dark">
     <ion-buttons slot="start">
       <ion-button (click)="close()">
         <ion-icon name="close"></ion-icon>
@@ -9,7 +9,12 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content class="ion-padding">
+
+  <div class="logo">
+    <img class="logo" src="assets/logo.png">
+  </div>
+
   <form [formGroup]="signUpForm">
     <ion-list>
       <ion-item>
@@ -20,7 +25,9 @@
         <ion-label position="stacked">Create a password</ion-label>
         <ion-input type="password" name="password" formControlName="password" placeholder="minimum 6 characters"></ion-input>
       </ion-item>
-      <ion-button [disabled]="!signUpForm.valid" type="submit" color="dark" expand="block" (click)="submit()" >Sign Up</ion-button>
+      <div class="ion-padding-top">
+        <ion-button [disabled]="!signUpForm.valid" type="submit" color="success" expand="block" (click)="submit()" >Register</ion-button>
+      </div>
     </ion-list>
   </form>
 </ion-content>

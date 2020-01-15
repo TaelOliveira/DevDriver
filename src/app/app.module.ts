@@ -15,6 +15,8 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { environment } from '../environments/environment';
 import { RegisterPage } from './register/register.page';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ImagePicker } from '@ionic-native/image-picker/ngx';
+import { WebView } from '@ionic-native/ionic-webview/ngx';
 
 @NgModule({
   declarations: [AppComponent, RegisterPage],
@@ -29,6 +31,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     AngularFirestoreModule,
   ],
   providers: [
+    ImagePicker,
+    WebView,
+    ReactiveFormsModule,
     StatusBar,
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }

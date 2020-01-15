@@ -1,0 +1,14 @@
+ion-content {
+    --ion-background-color: black;
+
+    ion-item {
+        margin-top: 10px;
+
+        ion-avatar {
+            margin: auto;
+            margin-bottom: 10px;
+            width: 150px;
+            height: 150px;
+        }
+    }
+}

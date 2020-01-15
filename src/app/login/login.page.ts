@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { Validators, FormGroup, FormBuilder } from '@angular/forms';
 import { AuthService } from '../auth.service';
 import { RegisterPage } from '../register/register.page';
+import * as firebase from 'firebase/app';
 
 @Component({
   selector: 'app-login',
@@ -20,6 +21,7 @@ export class LoginPage implements OnInit {
     private auth: AuthService,
     private router: Router,
     public menu: MenuController,
+    public toastController: ToastController,
     private formBuilder: FormBuilder
   ) { }
 
@@ -44,6 +46,7 @@ export class LoginPage implements OnInit {
       })
       .catch((error) => {
         console.log(error)
+        this.presentToast(error.message, true, 'bottom', 3000);
       })
   }
 
@@ -57,16 +60,32 @@ export class LoginPage implements OnInit {
         const email = response.data.email;
         const password = response.data.password;
         this.auth.signUp(email, password)
-          .then((userData) => {
+        .then((newUserCredential: firebase.auth.UserCredential) => {
+          firebase
+            .firestore()
+            .doc(`/userProfile/${newUserCredential.user.uid}`)
+            .set({'email': email});
+        })
+          .then(async (userData) => {
             // sign up successful
-            this.router.navigate(['/profile']);
+            await this.presentToast("Your account has been created!", true, 'bottom', 3000);
           })
-          .catch((error) => {
-            // handle errors
+          .catch(async (error) => {
+            await this.presentToast(error.message, true, 'bottom', 3000);
           })
       }
     })
     await signUpModal.present();
+  }
+
+  async presentToast(message, show_button, position, duration) {
+    const toast = await this.toastController.create({
+      message: message,
+      showCloseButton: show_button,
+      position: position,
+      duration: duration
+    });
+    toast.present();
   }
 
 }

@@ -1,9 +1,20 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>profile</ion-title>
+  <ion-toolbar color="dark">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+      <ion-title>Profile</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content class="ion-padding">
+
+  <ion-item *ngFor="let user of user | async">
+    <ion-avatar>
+      <img [src]="user.photoURL || 'assets/avatar.png'">
+    </ion-avatar>
+  </ion-item>
+
+  <ion-button (click)="uploadPicture.openImagePicker()" color="secondary" expand="full">Upload a Picture</ion-button>
 
 </ion-content>

@@ -1,0 +1,39 @@
+ion-header{
+    
+    ion-button{
+        color: white;
+
+        ion-icon{
+            font-size: 32px;
+          }
+    }
+}
+
+ion-content {
+    --ion-background-color: black;
+
+    .logo {
+        display: flex;
+        justify-content: center;
+    }
+
+    form {
+        margin-top: 3rem;
+
+        ion-list{
+
+            ion-item{
+                padding: 5px;
+                ion-label{
+                    color: red;
+                    size: 2em;
+                }
+                ion-input{
+                    color: white;
+                }
+            }
+
+        }
+
+    }
+}

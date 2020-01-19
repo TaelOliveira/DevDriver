@@ -11,34 +11,138 @@
 
   <form [formGroup]="calculationForm">
     <ion-list>
+      <h2>Date</h2>
       <ion-item>
-        <ion-label position="stacked">Date</ion-label>
         <ion-datetime formControlName="date" placeholder="Select Date"></ion-datetime>
       </ion-item>
+      <h2>Total Kms of the day</h2>
       <ion-item>
-        <ion-label position="stacked">Total Kms of the day</ion-label>
         <ion-input formControlName="kms" type="number" placeholder="12315" name="kms"></ion-input>
       </ion-item>
+      <div class="error-container">
+        <ng-container *ngFor="let validation of validations.kms">
+          <div class="error-message" *ngIf="calculationForm.get('kms').hasError(validation.type) && (calculationForm.get('kms').dirty || calculationForm.get('kms').touched)">
+            <ion-icon name="information-circle-outline"></ion-icon>
+            <span>{{ validation.message }}</span>
+          </div>
+        </ng-container>
+      </div>
+      <h2>Total hours of the day</h2>
       <ion-item>
-        <ion-label position="stacked">Total hours of the day</ion-label>
-        <ion-input formControlName="hours" type="number" placeholder="10" name="hours"></ion-input>
+        <div>
+          <ion-row>
+            <ion-col>
+              <ion-label position="stacked">Hours</ion-label>
+              <ion-input formControlName="hours" type="number" placeholder="5" name="number"></ion-input>
+            </ion-col>
+            <ion-col>
+              <ion-label position="stacked">Minutes</ion-label>
+              <ion-input formControlName="minutes" type="number" placeholder="23" name="minutes"></ion-input>
+            </ion-col>
+          </ion-row>
+        </div>
       </ion-item>
+      <div class="error-container">
+        <ng-container *ngFor="let validation of validations.hours">
+          <div class="error-message" *ngIf="calculationForm.get('hours').hasError(validation.type) && (calculationForm.get('hours').dirty || calculationForm.get('hours').touched)">
+            <ion-icon name="information-circle-outline"></ion-icon>
+            <span>{{ validation.message }}</span>
+          </div>
+        </ng-container>
+      </div>
+      <div class="error-container">
+        <ng-container *ngFor="let validation of validations.minutes">
+          <div class="error-message" *ngIf="calculationForm.get('minutes').hasError(validation.type) && (calculationForm.get('minutes').dirty || calculationForm.get('minutes').touched)">
+            <ion-icon name="information-circle-outline"></ion-icon>
+            <span>{{ validation.message }}</span>
+          </div>
+        </ng-container>
+      </div>
+      <h2>Earnings of the day</h2>
       <ion-item>
-        <ion-label position="stacked">Total Earnings of the day</ion-label>
-        <ion-input formControlName="earnings" type="number" placeholder="554.78" name="earnings"></ion-input>
+        <div>
+          <ion-row>
+            <ion-col>
+              <ion-label position="stacked">Earnings 1</ion-label>
+              <ion-input formControlName="earnings1" type="number" placeholder="554.78" name="earnings1"></ion-input>
+            </ion-col>
+            <ion-col>
+              <ion-label position="stacked">Earnings 2</ion-label>
+              <ion-input formControlName="earnings2" type="number" placeholder="554.78" name="earnings2"></ion-input>
+            </ion-col>
+            <ion-col>
+              <ion-label position="stacked">Earnings 3</ion-label>
+              <ion-input formControlName="earnings3" type="number" placeholder="554.78" name="earnings3"></ion-input>
+            </ion-col>
+          </ion-row>
+        </div>
+        <div class="error-container">
+          <ng-container *ngFor="let validation of validations.earnings1">
+            <div class="error-message" *ngIf="calculationForm.get('earnings1').hasError(validation.type) && (calculationForm.get('earnings1').dirty || calculationForm.get('earnings1').touched)">
+              <ion-icon name="information-circle-outline"></ion-icon>
+              <span>{{ validation.message }}</span>
+            </div>
+          </ng-container>
+        </div>
+        <div class="error-container">
+          <ng-container *ngFor="let validation of validations.earnings2">
+            <div class="error-message" *ngIf="calculationForm.get('earnings2').hasError(validation.type) && (calculationForm.get('earnings2').dirty || calculationForm.get('earnings2').touched)">
+              <ion-icon name="information-circle-outline"></ion-icon>
+              <span>{{ validation.message }}</span>
+            </div>
+          </ng-container>
+        </div>
+        <div class="error-container">
+          <ng-container *ngFor="let validation of validations.earnings3">
+            <div class="error-message" *ngIf="calculationForm.get('earnings3').hasError(validation.type) && (calculationForm.get('earnings3').dirty || calculationForm.get('earnings3').touched)">
+              <ion-icon name="information-circle-outline"></ion-icon>
+              <span>{{ validation.message }}</span>
+            </div>
+          </ng-container>
+        </div>
       </ion-item>
       <h2>Expenses</h2>
       <ion-item>
-        <ion-label position="stacked">Petrol</ion-label>
-        <ion-input formControlName="petrol" type="number" placeholder="54.44" name="petrol"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label position="stacked">Tolls</ion-label>
-        <ion-input formControlName="tolls" type="number" placeholder="25.67" name="tolls"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label position="stacked">Other</ion-label>
-        <ion-input formControlName="other" type="number" placeholder="12.45" name="other"></ion-input>
+        <div>
+          <ion-row>
+            <ion-col>
+              <ion-label position="stacked">Petrol</ion-label>
+              <ion-input formControlName="petrol" type="number" placeholder="54.44" name="petrol"></ion-input>
+            </ion-col>
+            <ion-col>
+              <ion-label position="stacked">Tolls</ion-label>
+              <ion-input formControlName="tolls" type="number" placeholder="25.67" name="tolls"></ion-input>
+            </ion-col>
+            <ion-col>
+              <ion-label position="stacked">Other</ion-label>
+              <ion-input formControlName="other" type="number" placeholder="12.45" name="other"></ion-input>
+            </ion-col>
+          </ion-row>
+        </div>
+        <div class="error-container">
+          <ng-container *ngFor="let validation of validations.petrol">
+            <div class="error-message" *ngIf="calculationForm.get('petrol').hasError(validation.type) && (calculationForm.get('petrol').dirty || calculationForm.get('petrol').touched)">
+              <ion-icon name="information-circle-outline"></ion-icon>
+              <span>{{ validation.message }}</span>
+            </div>
+          </ng-container>
+        </div>
+        <div class="error-container">
+          <ng-container *ngFor="let validation of validations.tolls">
+            <div class="error-message" *ngIf="calculationForm.get('tolls').hasError(validation.type) && (calculationForm.get('tolls').dirty || calculationForm.get('tolls').touched)">
+              <ion-icon name="information-circle-outline"></ion-icon>
+              <span>{{ validation.message }}</span>
+            </div>
+          </ng-container>
+        </div>
+        <div class="error-container">
+          <ng-container *ngFor="let validation of validations.other">
+            <div class="error-message" *ngIf="calculationForm.get('other').hasError(validation.type) && (calculationForm.get('other').dirty || calculationForm.get('other').touched)">
+              <ion-icon name="information-circle-outline"></ion-icon>
+              <span>{{ validation.message }}</span>
+            </div>
+          </ng-container>
+        </div>
       </ion-item>
       <div class="ion-padding-top">
         <ion-button [disabled]="!calculationForm.valid" expand="block" type="submit" color="success" (click)="showOnScreen()">Show on screen</ion-button>

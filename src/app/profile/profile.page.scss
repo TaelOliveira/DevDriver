@@ -1,38 +1,43 @@
 ion-content {
-    --ion-background-color: black;
+  --ion-background-color: black;
 
-    ion-item {
-        margin-top: 10px;
+  ion-item {
+    margin-top: 10px;
 
-        ion-avatar {
-            margin: auto;
-            margin-bottom: 10px;
-            width: 150px;
-            height: 150px;
-        }
+    ion-avatar {
+      margin: auto;
+      margin-bottom: 10px;
+      width: 150px;
+      height: 150px;
     }
+  }
 }
 
-.ion-text-start{
-    color: white;
-  }
-  
-  .ion-text-start .ion-padding{
-    color: red;
-  }
+.ion-text-start {
+  color: white;
+}
 
-.myClass1{
-    font-size: larger;
-    color: red;
-  }
-  
-  .myClass2{
-    font-size: larger;
-    margin-left: 10px;
-  }
+.ion-text-start .ion-padding {
+  color: red;
+}
 
-  .myClass3{
-    color: white;
-    font-style: italic;
-  }
-  
+.myClass1 {
+  font-size: larger;
+  color: red;
+}
+
+.myClass2 {
+  font-size: larger;
+  margin-left: 10px;
+}
+
+.myClass3 {
+  color: var(--ion-color-secondary);
+  font-style: italic;
+}
+
+.icon {
+  font-size: 20px;
+  color: var(--ion-color-warning);
+  margin-left: 10px;
+}

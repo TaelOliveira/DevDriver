@@ -15,7 +15,10 @@ export class MoneyPage implements OnInit {
   day;
   kms;
   hours;
-  earnings;
+  minutes;
+  earnings1;
+  earnings2;
+  earnings3;
   petrol;
   tolls;
   other;
@@ -23,6 +26,42 @@ export class MoneyPage implements OnInit {
   totalExpenses;
   totalEarnings;
   avgEarnings;
+  totalHours;
+  profit;
+
+  validations = {
+    'kms': [
+      { type: 'min', message: 'Total kms vannot be less than 0.' }
+    ],
+    'hours': [
+      { type: 'maxlength', message: 'Hours cannot be more than 2 characters long.' },
+      { type: 'max', message: 'Hours cannot be more than 24.' },
+      { type: 'min', message: 'Hours cannot be less than 0.' }
+    ],
+    'minutes': [
+      { type: 'maxlength', message: 'Minutes cannot be more than 2 characters long.' },
+      { type: 'max', message: 'Minutes cannot be more than 59.' },
+      { type: 'min', message: 'Minutes cannot be less than 0.' }
+    ],
+    'earnings1': [
+      { type: 'min', message: 'Earnings cannot be less than 0.' }
+    ],
+    'earnings2': [
+      { type: 'min', message: 'Earnings cannot be less than 0.' }
+    ],
+    'earnings3': [
+      { type: 'min', message: 'Earnings cannot be less than 0.' }
+    ],
+    'petrol': [
+      { type: 'min', message: 'Petrol cannot be less than 0.' }
+    ],
+    'tolls': [
+      { type: 'min', message: 'Tolls cannot be less than 0.' }
+    ],
+    'other': [
+      { type: 'min', message: 'Other cannot be less than 0.' }
+    ],
+  };
 
   constructor(
     public alertController: AlertController,
@@ -35,49 +74,47 @@ export class MoneyPage implements OnInit {
 
   ngOnInit() {
     this.calculationForm = this.formBuilder.group({
-      kms: ['', Validators.required],
-      hours: ['', Validators.required],
-      earnings: ['', Validators.required],
-      petrol: ['', Validators.required],
-      tolls: ['', Validators.required],
-      other: ['', Validators.required],
+      kms: ['', [Validators.required, Validators.min(0)]],
+      hours: ['', [Validators.required, Validators.maxLength(2), Validators.max(24), Validators.min(0)]],
+      minutes: ['', [Validators.required, Validators.maxLength(2), Validators.max(59), Validators.min(0)]],
+      earnings1: ['', [Validators.required, Validators.min(0)]],
+      earnings2: ['', [Validators.required, Validators.min(0)]],
+      earnings3: ['', [Validators.required, Validators.min(0)]],
+      petrol: ['', [Validators.required, Validators.min(0)]],
+      tolls: ['', [Validators.required, Validators.min(0)]],
+      other: ['', [Validators.required, Validators.min(0)]],
       date: ['', Validators.required],
     });
   }
 
-  async showOnScreen(){
+
+  async showOnScreen() {
 
     this.kms = this.calculationForm.value['kms'];
     this.hours = this.calculationForm.value['hours'];
-    this.earnings = this.calculationForm.value['earnings'];
+    this.minutes = this.calculationForm.value['minutes'];
+    this.earnings1 = this.calculationForm.value['earnings1'];
+    this.earnings2 = this.calculationForm.value['earnings2'];
+    this.earnings3 = this.calculationForm.value['earnings3'];
     this.petrol = this.calculationForm.value['petrol'];
     this.tolls = this.calculationForm.value['tolls'];
     this.other = this.calculationForm.value['other'];
     this.date = this.calculationForm.value['date'];
 
-    if(this.kms <= 0){
-      this.presentToast("Total kms cannt be empty or less than 0!", true, 'bottom', 3000);
-    }
-    if(this.hours <= 0){
-      this.presentToast("Total kms cannt be empty or less than 0!", true, 'bottom', 3000);
-    }
-    if(this.earnings <= 0){
-      this.presentToast("Total kms cannt be empty or less than 0!", true, 'bottom', 3000);
-    }
-    if(this.tolls < 0){
-      this.tolls = 0;
-    }
-    if(this.other < 0){
-      this.other = 0;
-    }
+    this.totalHours = this.decimalPipe.transform((this.hours + (this.minutes / 60)), '1.2-2');
 
-    this.totalExpenses = this.decimalPipe.transform((this.petrol + this.tolls + this.other), '1.2-2');
-    this.totalEarnings = this.decimalPipe.transform((this.earnings - this.totalExpenses), '1.2-2');
-    this.avgEarnings = this.decimalPipe.transform((this.totalEarnings / this.hours), '1.2-2');
+    this.totalEarnings = this.decimalPipe.transform( (this.earnings1 + this.earnings2 + this.earnings3), '1.2-2');
+    this.totalExpenses = this.decimalPipe.transform( (this.petrol + this.tolls + this.other), '1.2-2');
+    this.profit = this.decimalPipe.transform( (this.totalEarnings - this.totalExpenses), '1.2-2');
+    
+    this.avgEarnings = this.decimalPipe.transform((this.totalEarnings / this.totalHours), '1.2-2');
 
     const alert = await this.alertController.create({
-      header: 'Your Earnings',
-      message: 'Total Expenses: $' + this.totalExpenses + '<br/>' + 'Total Earnings: $' + this.totalEarnings + '<br/>' + 'Average Earnings: $' + this.avgEarnings + '/hour',
+      header: 'Your Day Summary',
+      message: 'Total Earnings: $' + this.totalEarnings + '<br/>' +
+                'Total Expenses: $' + this.totalExpenses + '<br/>' +
+                'Profit: $' + this.profit + '<br/>' +
+                'Average Earnings: $' + this.avgEarnings + '/hour',
       cssClass: "myAlert",
       animated: true,
       buttons: ['OK']
@@ -87,13 +124,13 @@ export class MoneyPage implements OnInit {
 
   }
 
-  async addToList(){
+  async addToList() {
     const id = this.day ? this.day.id : '';
     const data = {
       createdAt: this.date,
       createdBy: this.db.currentUser.uid,
       kms: this.kms,
-      hours: this.hours,
+      hours: this.hours + 'h ' + this.minutes + 'min',
       totalExpenses: this.totalExpenses,
       totalEarnings: this.totalEarnings,
       avgEarnings: this.avgEarnings

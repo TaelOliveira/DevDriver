@@ -4,6 +4,10 @@ ion-content {
     form {
         ion-list {
             padding: 10px;
+
+            h2{
+                color: var(--ion-color-success-tint);
+            }
             ion-label {
                 color: var(--ion-color-primary);
                 font-size: x-large;
@@ -14,16 +18,15 @@ ion-content {
                 font-size: larger;
             }
 
-            h2 {
-                color: red;
-                font-family: Arial, Helvetica, sans-serif;
-            }
-
             ion-datetime {
                 color: white;
             }
         }
     }
+}
+
+.error-message{
+    color: var(--ion-color-warning);
 }
 
 .myAlert{

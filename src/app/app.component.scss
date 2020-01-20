@@ -1,6 +1,6 @@
 ion-header {
-  ion-toolbar{
-    ion-title{
+  ion-toolbar {
+    ion-title {
       font-size: 32px;
       font-family: Arial, Helvetica, sans-serif;
     }
@@ -24,7 +24,7 @@ ion-menu {
 
           ion-icon {
             font-size: 25px;
-            color: white;
+            color: var(--ion-color-warning);
           }
         }
       }
@@ -32,12 +32,13 @@ ion-menu {
   }
 }
 
-ion-footer{
-  ion-toolbar{
-    ion-buttons{
-      ion-button{
+ion-footer {
+  ion-toolbar {
+    ion-buttons {
+      ion-button {
         font-size: 25px;
-        ion-icon{
+
+        ion-icon {
           font-size: 25px;
         }
       }

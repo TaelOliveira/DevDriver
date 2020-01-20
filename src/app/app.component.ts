@@ -22,8 +22,13 @@ export class AppComponent {
     },
     {
       title: 'Calculator',
-      url: '/money',
+      url: '/calculator',
       icon: 'calculator'
+    },
+    {
+      title: 'List',
+      url: '/items',
+      icon: 'list-box'
     },
   ];
 
@@ -51,7 +56,8 @@ export class AppComponent {
       if( user ) {
         this.appPages = [
           {title: 'Profile' , url: '/profile', icon: 'person'},
-          {title: 'Calculator' , url: '/money', icon: 'caculator'},
+          {title: 'Calculator' , url: '/calculator', icon: 'calculator'},
+          {title: 'List' , url: '/items', icon: 'list-box'},
         ]
         this.user = user;
       }

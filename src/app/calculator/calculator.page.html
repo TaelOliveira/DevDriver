@@ -3,7 +3,7 @@
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-      <ion-title>Calculator</ion-title>
+    <ion-title>Calculator</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -13,15 +13,16 @@
     <ion-list>
       <h2>Date</h2>
       <ion-item>
-        <ion-datetime formControlName="date" placeholder="Select Date"></ion-datetime>
+        <ion-datetime formControlName="date" name="date" placeholder="Select Date"></ion-datetime>
       </ion-item>
       <h2>Total Kms of the day</h2>
       <ion-item>
-        <ion-input formControlName="kms" type="number" placeholder="12315" name="kms"></ion-input>
+        <ion-input formControlName="kms" type="number" placeholder="235" name="kms"></ion-input>
       </ion-item>
       <div class="error-container">
         <ng-container *ngFor="let validation of validations.kms">
-          <div class="error-message" *ngIf="calculationForm.get('kms').hasError(validation.type) && (calculationForm.get('kms').dirty || calculationForm.get('kms').touched)">
+          <div class="error-message"
+            *ngIf="calculationForm.get('kms').hasError(validation.type) && (calculationForm.get('kms').dirty || calculationForm.get('kms').touched)">
             <ion-icon name="information-circle-outline"></ion-icon>
             <span>{{ validation.message }}</span>
           </div>
@@ -33,7 +34,7 @@
           <ion-row>
             <ion-col>
               <ion-label position="stacked">Hours</ion-label>
-              <ion-input formControlName="hours" type="number" placeholder="5" name="number"></ion-input>
+              <ion-input formControlName="hours" type="number" placeholder="5" name="hours"></ion-input>
             </ion-col>
             <ion-col>
               <ion-label position="stacked">Minutes</ion-label>
@@ -44,7 +45,8 @@
       </ion-item>
       <div class="error-container">
         <ng-container *ngFor="let validation of validations.hours">
-          <div class="error-message" *ngIf="calculationForm.get('hours').hasError(validation.type) && (calculationForm.get('hours').dirty || calculationForm.get('hours').touched)">
+          <div class="error-message"
+            *ngIf="calculationForm.get('hours').hasError(validation.type) && (calculationForm.get('hours').dirty || calculationForm.get('hours').touched)">
             <ion-icon name="information-circle-outline"></ion-icon>
             <span>{{ validation.message }}</span>
           </div>
@@ -52,7 +54,8 @@
       </div>
       <div class="error-container">
         <ng-container *ngFor="let validation of validations.minutes">
-          <div class="error-message" *ngIf="calculationForm.get('minutes').hasError(validation.type) && (calculationForm.get('minutes').dirty || calculationForm.get('minutes').touched)">
+          <div class="error-message"
+            *ngIf="calculationForm.get('minutes').hasError(validation.type) && (calculationForm.get('minutes').dirty || calculationForm.get('minutes').touched)">
             <ion-icon name="information-circle-outline"></ion-icon>
             <span>{{ validation.message }}</span>
           </div>
@@ -78,7 +81,8 @@
         </div>
         <div class="error-container">
           <ng-container *ngFor="let validation of validations.earnings1">
-            <div class="error-message" *ngIf="calculationForm.get('earnings1').hasError(validation.type) && (calculationForm.get('earnings1').dirty || calculationForm.get('earnings1').touched)">
+            <div class="error-message"
+              *ngIf="calculationForm.get('earnings1').hasError(validation.type) && (calculationForm.get('earnings1').dirty || calculationForm.get('earnings1').touched)">
               <ion-icon name="information-circle-outline"></ion-icon>
               <span>{{ validation.message }}</span>
             </div>
@@ -86,7 +90,8 @@
         </div>
         <div class="error-container">
           <ng-container *ngFor="let validation of validations.earnings2">
-            <div class="error-message" *ngIf="calculationForm.get('earnings2').hasError(validation.type) && (calculationForm.get('earnings2').dirty || calculationForm.get('earnings2').touched)">
+            <div class="error-message"
+              *ngIf="calculationForm.get('earnings2').hasError(validation.type) && (calculationForm.get('earnings2').dirty || calculationForm.get('earnings2').touched)">
               <ion-icon name="information-circle-outline"></ion-icon>
               <span>{{ validation.message }}</span>
             </div>
@@ -94,7 +99,8 @@
         </div>
         <div class="error-container">
           <ng-container *ngFor="let validation of validations.earnings3">
-            <div class="error-message" *ngIf="calculationForm.get('earnings3').hasError(validation.type) && (calculationForm.get('earnings3').dirty || calculationForm.get('earnings3').touched)">
+            <div class="error-message"
+              *ngIf="calculationForm.get('earnings3').hasError(validation.type) && (calculationForm.get('earnings3').dirty || calculationForm.get('earnings3').touched)">
               <ion-icon name="information-circle-outline"></ion-icon>
               <span>{{ validation.message }}</span>
             </div>
@@ -121,7 +127,8 @@
         </div>
         <div class="error-container">
           <ng-container *ngFor="let validation of validations.petrol">
-            <div class="error-message" *ngIf="calculationForm.get('petrol').hasError(validation.type) && (calculationForm.get('petrol').dirty || calculationForm.get('petrol').touched)">
+            <div class="error-message"
+              *ngIf="calculationForm.get('petrol').hasError(validation.type) && (calculationForm.get('petrol').dirty || calculationForm.get('petrol').touched)">
               <ion-icon name="information-circle-outline"></ion-icon>
               <span>{{ validation.message }}</span>
             </div>
@@ -129,7 +136,8 @@
         </div>
         <div class="error-container">
           <ng-container *ngFor="let validation of validations.tolls">
-            <div class="error-message" *ngIf="calculationForm.get('tolls').hasError(validation.type) && (calculationForm.get('tolls').dirty || calculationForm.get('tolls').touched)">
+            <div class="error-message"
+              *ngIf="calculationForm.get('tolls').hasError(validation.type) && (calculationForm.get('tolls').dirty || calculationForm.get('tolls').touched)">
               <ion-icon name="information-circle-outline"></ion-icon>
               <span>{{ validation.message }}</span>
             </div>
@@ -137,7 +145,8 @@
         </div>
         <div class="error-container">
           <ng-container *ngFor="let validation of validations.other">
-            <div class="error-message" *ngIf="calculationForm.get('other').hasError(validation.type) && (calculationForm.get('other').dirty || calculationForm.get('other').touched)">
+            <div class="error-message"
+              *ngIf="calculationForm.get('other').hasError(validation.type) && (calculationForm.get('other').dirty || calculationForm.get('other').touched)">
               <ion-icon name="information-circle-outline"></ion-icon>
               <span>{{ validation.message }}</span>
             </div>
@@ -145,10 +154,12 @@
         </div>
       </ion-item>
       <div class="ion-padding-top">
-        <ion-button [disabled]="!calculationForm.valid" expand="block" type="submit" color="success" (click)="showOnScreen()">Show on screen</ion-button>
+        <ion-button [disabled]="!calculationForm.valid" expand="block" type="submit" color="success"
+          (click)="showOnScreen()">Show on screen</ion-button>
       </div>
       <div class="ion-padding-top">
-        <ion-button [disabled]="!calculationForm.valid" type="button" expand="block" color="primary" (click)="addToList()">Add to List</ion-button>
+        <ion-button [disabled]="!calculationForm.valid" type="button" expand="block" color="primary"
+          (click)="addToList()">Add to List</ion-button>
       </div>
       <div class="ion-padding-top">
         <ion-button expand="block" color="warning" (click)="showCalculations()">Show Calculations</ion-button>

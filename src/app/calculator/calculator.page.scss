@@ -5,9 +5,10 @@ ion-content {
         ion-list {
             padding: 10px;
 
-            h2{
+            h2 {
                 color: var(--ion-color-success-tint);
             }
+
             ion-label {
                 color: var(--ion-color-primary);
                 font-size: x-large;
@@ -25,11 +26,11 @@ ion-content {
     }
 }
 
-.error-message{
+.error-message {
     color: var(--ion-color-warning);
 }
 
-.myAlert{
+.myAlert {
     background-color: black;
     color: green;
 }

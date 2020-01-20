@@ -22,8 +22,13 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
-    path: 'money',
-    loadChildren: () => import('./money/money.module').then( m => m.MoneyPageModule),
+    path: 'items',
+    loadChildren: () => import('./items/items.module').then( m => m.ItemsPageModule),
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'calculator',
+    loadChildren: () => import('./calculator/calculator.module').then( m => m.CalculatorPageModule),
     canActivate: [AuthGuard]
   },
 ];

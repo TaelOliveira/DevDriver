@@ -5,11 +5,12 @@ import { DatabaseService } from '../database.service';
 import { DecimalPipe } from '@angular/common';
 
 @Component({
-  selector: 'app-money',
-  templateUrl: './money.page.html',
-  styleUrls: ['./money.page.scss'],
+  selector: 'app-calculator',
+  templateUrl: './calculator.page.html',
+  styleUrls: ['./calculator.page.scss'],
 })
-export class MoneyPage implements OnInit {
+
+export class CalculatorPage implements OnInit {
 
   calculationForm: FormGroup;
   day;
@@ -28,6 +29,7 @@ export class MoneyPage implements OnInit {
   avgEarnings;
   totalHours;
   profit;
+  dateFormat;
 
   validations = {
     'kms': [
@@ -90,7 +92,7 @@ export class MoneyPage implements OnInit {
 
   async showOnScreen() {
 
-    this.kms = this.calculationForm.value['kms'];
+    this.kms = parseFloat(this.calculationForm.value['kms']);
     this.hours = this.calculationForm.value['hours'];
     this.minutes = this.calculationForm.value['minutes'];
     this.earnings1 = this.calculationForm.value['earnings1'];
@@ -100,20 +102,21 @@ export class MoneyPage implements OnInit {
     this.tolls = this.calculationForm.value['tolls'];
     this.other = this.calculationForm.value['other'];
     this.date = this.calculationForm.value['date'];
+    this.dateFormat = this.date.split('T')[0];
 
     this.totalHours = this.decimalPipe.transform((this.hours + (this.minutes / 60)), '1.2-2');
 
-    this.totalEarnings = parseFloat(this.decimalPipe.transform( (this.earnings1 + this.earnings2 + this.earnings3), '1.2-2'));
-    this.totalExpenses = parseFloat(this.decimalPipe.transform( (this.petrol + this.tolls + this.other), '1.2-2'));
-    this.profit = parseFloat(this.decimalPipe.transform( (this.totalEarnings - this.totalExpenses), '1.2-2'));
+    this.totalEarnings = parseFloat(this.decimalPipe.transform((this.earnings1 + this.earnings2 + this.earnings3), '1.2-2'));
+    this.totalExpenses = parseFloat(this.decimalPipe.transform((this.petrol + this.tolls + this.other), '1.2-2'));
+    this.profit = parseFloat(this.decimalPipe.transform((this.totalEarnings - this.totalExpenses), '1.2-2'));
     this.avgEarnings = parseFloat(this.decimalPipe.transform((this.totalEarnings / this.totalHours), '1.2-2'));
 
     const alert = await this.alertController.create({
       header: 'Your Day Summary',
       message: 'Total Earnings: $' + this.totalEarnings + '<br/>' +
-                'Total Expenses: $' + this.totalExpenses + '<br/>' +
-                'Profit: $' + this.profit + '<br/>' +
-                'Average Earnings: $' + this.avgEarnings + '/hour',
+        'Total Expenses: $' + this.totalExpenses + '<br/>' +
+        'Profit: $' + this.profit + '<br/>' +
+        'Average Earnings: $' + this.avgEarnings + '/hour',
       cssClass: "myAlert",
       animated: true,
       buttons: ['OK']
@@ -124,9 +127,12 @@ export class MoneyPage implements OnInit {
   }
 
   async addToList() {
+    console.log(this.kms);
+    console.log(this.dateFormat);
+    console.log(this.earnings1);
     const id = this.day ? this.day.id : '';
     const data = {
-      createdAt: this.date,
+      createdAt: this.dateFormat,
       createdBy: this.db.currentUser.uid,
       kms: this.kms,
       hours: this.hours + 'h ' + this.minutes + 'min',
@@ -141,7 +147,7 @@ export class MoneyPage implements OnInit {
     this.calculationForm.reset();
   }
 
-  async showCalculations(){
+  async showCalculations() {
     const alert = await this.alertController.create({
       header: 'How it is done',
       message: '<strong>' + 'Total Earnings:' + '</strong><br/>' +

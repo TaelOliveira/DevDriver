@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar color="dark">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>List</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-item *ngFor="let item of items | async">
+    <ion-grid>
+      <ion-row>
+        <ion-col size="10">
+          <ion-label>Created at: {{item.createdAt}}</ion-label>
+          <ion-label>Hours worked: {{item.hours}}</ion-label>
+          <ion-label>Kms driven: {{item.kms}}kms</ion-label>
+          <ion-label>Total Earnings: ${{item.totalEarnings}}</ion-label>
+          <ion-label>Total Expenses: ${{item.totalExpenses}}</ion-label>
+          <ion-label>Profit: ${{item.profit}}</ion-label>
+          <ion-label>Avg hour: ${{item.avgEarnings}}</ion-label>
+        </ion-col>
+        <ion-col size="2">
+          <ion-button color="danger" (click)="deleteItem(item)">
+            <ion-icon name="trash"></ion-icon>
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-item>
+
+</ion-content>

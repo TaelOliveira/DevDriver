@@ -4,18 +4,18 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { MoneyPageRoutingModule } from './money-routing.module';
+import { CalculatorPageRoutingModule } from './calculator-routing.module';
 
-import { MoneyPage } from './money.page';
+import { CalculatorPage } from './calculator.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
-    IonicModule,
     ReactiveFormsModule,
-    MoneyPageRoutingModule
+    IonicModule,
+    CalculatorPageRoutingModule
   ],
-  declarations: [MoneyPage]
+  declarations: [CalculatorPage]
 })
-export class MoneyPageModule {}
+export class CalculatorPageModule {}

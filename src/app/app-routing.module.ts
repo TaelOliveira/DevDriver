@@ -25,7 +25,7 @@ const routes: Routes = [
     path: 'money',
     loadChildren: () => import('./money/money.module').then( m => m.MoneyPageModule),
     canActivate: [AuthGuard]
-  }
+  },
 ];
 @NgModule({
   imports: [

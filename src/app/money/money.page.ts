@@ -103,11 +103,10 @@ export class MoneyPage implements OnInit {
 
     this.totalHours = this.decimalPipe.transform((this.hours + (this.minutes / 60)), '1.2-2');
 
-    this.totalEarnings = this.decimalPipe.transform( (this.earnings1 + this.earnings2 + this.earnings3), '1.2-2');
-    this.totalExpenses = this.decimalPipe.transform( (this.petrol + this.tolls + this.other), '1.2-2');
-    this.profit = this.decimalPipe.transform( (this.totalEarnings - this.totalExpenses), '1.2-2');
-    
-    this.avgEarnings = this.decimalPipe.transform((this.totalEarnings / this.totalHours), '1.2-2');
+    this.totalEarnings = parseFloat(this.decimalPipe.transform( (this.earnings1 + this.earnings2 + this.earnings3), '1.2-2'));
+    this.totalExpenses = parseFloat(this.decimalPipe.transform( (this.petrol + this.tolls + this.other), '1.2-2'));
+    this.profit = parseFloat(this.decimalPipe.transform( (this.totalEarnings - this.totalExpenses), '1.2-2'));
+    this.avgEarnings = parseFloat(this.decimalPipe.transform((this.totalEarnings / this.totalHours), '1.2-2'));
 
     const alert = await this.alertController.create({
       header: 'Your Day Summary',
@@ -133,11 +132,32 @@ export class MoneyPage implements OnInit {
       hours: this.hours + 'h ' + this.minutes + 'min',
       totalExpenses: this.totalExpenses,
       totalEarnings: this.totalEarnings,
-      avgEarnings: this.avgEarnings
+      avgEarnings: this.avgEarnings,
+      profit: this.profit
     };
 
-    this.db.updateAt(`day/${id}`, data);
-    this.presentToast("Added!", true, 'bottom', 3000);
+    this.db.updateAt(`items/${id}`, data);
+    this.presentToast("Item added!", true, 'bottom', 3000);
+    this.calculationForm.reset();
+  }
+
+  async showCalculations(){
+    const alert = await this.alertController.create({
+      header: 'How it is done',
+      message: '<strong>' + 'Total Earnings:' + '</strong><br/>' +
+                'earnings1 + earnings2 + earnings3' + '<br/><br/>' +
+                '<strong>' + 'Total Expenses:' + '</strong><br/>' +
+                'petrol + tolls + other' + '<br/><br/>' +
+                '<strong>' + 'Profit:' + '</strong><br/>' +
+                'Total Earnings - Total Expenses' + '<br/><br/>' +
+                '<strong>' + 'Average Earnings:' + '</strong><br/>' +
+                'Total Earnings / Total Hours' + '<br/>',
+      cssClass: "myAlert",
+      animated: true,
+      buttons: ['OK']
+    });
+
+    await alert.present();
   }
 
   async presentToast(message, show_button, position, duration) {

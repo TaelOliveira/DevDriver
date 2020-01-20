@@ -21,9 +21,9 @@ export class AppComponent {
       icon: 'person'
     },
     {
-      title: 'Money',
+      title: 'Calculator',
       url: '/money',
-      icon: 'cash'
+      icon: 'calculator'
     },
   ];
 
@@ -51,7 +51,7 @@ export class AppComponent {
       if( user ) {
         this.appPages = [
           {title: 'Profile' , url: '/profile', icon: 'person'},
-          {title: 'Money' , url: '/money', icon: 'cash'},
+          {title: 'Calculator' , url: '/money', icon: 'caculator'},
         ]
         this.user = user;
       }

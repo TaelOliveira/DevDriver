@@ -3,7 +3,7 @@
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-      <ion-title>Money</ion-title>
+      <ion-title>Calculator</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -149,6 +149,9 @@
       </div>
       <div class="ion-padding-top">
         <ion-button [disabled]="!calculationForm.valid" type="button" expand="block" color="primary" (click)="addToList()">Add to List</ion-button>
+      </div>
+      <div class="ion-padding-top">
+        <ion-button expand="block" color="warning" (click)="showCalculations()">Show Calculations</ion-button>
       </div>
     </ion-list>
   </form>

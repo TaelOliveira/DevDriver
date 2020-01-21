@@ -30,6 +30,7 @@ export class CalculatorPage implements OnInit {
   totalHours;
   profit;
   dateFormat;
+  myDate;
 
   validations = {
     'kms': [
@@ -101,6 +102,7 @@ export class CalculatorPage implements OnInit {
     this.other = this.calculationForm.value['other'];
     this.date = this.calculationForm.value['date'];
     this.dateFormat = this.date.split('T')[0];
+    this.myDate = new Date(this.dateFormat);
   }
 
   calculations(){
@@ -131,12 +133,10 @@ export class CalculatorPage implements OnInit {
   async addToList() {
     this.getValuesFromForm();
     this.calculations();
-    console.log(this.kms);
-    console.log(this.dateFormat);
-    console.log(this.earnings1);
+    
     const id = this.day ? this.day.id : '';
     const data = {
-      createdAt: this.dateFormat,
+      createdAt: this.myDate,
       createdBy: this.db.currentUser.uid,
       kms: this.kms,
       hours: this.hours + 'h ' + this.minutes + 'min',

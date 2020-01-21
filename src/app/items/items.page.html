@@ -13,12 +13,16 @@
     <ion-grid>
       <ion-row>
         <ion-col size="10">
-          <ion-label>{{item.createdAt}}</ion-label>
+          <h2>{{item.createdAt.toDate() | date:'dd MMMM yyyy'}}</h2>
         </ion-col>
-        <ion-col size="2"></ion-col>
+        <ion-col size="2">
+          <ion-button color="danger" (click)="deleteItem(item)">
+            <ion-icon name="trash"></ion-icon>
+          </ion-button>
+        </ion-col>
       </ion-row>
       <ion-row>
-        <ion-col size="10">
+        <ion-col>
           <ion-chip outline color="warning">
             <ion-icon name="time"></ion-icon>
             <ion-label>{{item.hours}} worked</ion-label>
@@ -43,11 +47,6 @@
             <ion-icon name="hourglass"></ion-icon>
             <ion-label>${{item.avgEarnings}} per hour</ion-label>
           </ion-chip>
-        </ion-col>
-        <ion-col size="2">
-          <ion-button color="danger" (click)="deleteItem(item)">
-            <ion-icon name="trash"></ion-icon>
-          </ion-button>
         </ion-col>
       </ion-row>
     </ion-grid>

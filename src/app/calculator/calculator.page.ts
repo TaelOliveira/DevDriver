@@ -89,9 +89,7 @@ export class CalculatorPage implements OnInit {
     });
   }
 
-
-  async showOnScreen() {
-
+  getValuesFromForm(){
     this.kms = parseFloat(this.calculationForm.value['kms']);
     this.hours = this.calculationForm.value['hours'];
     this.minutes = this.calculationForm.value['minutes'];
@@ -103,14 +101,19 @@ export class CalculatorPage implements OnInit {
     this.other = this.calculationForm.value['other'];
     this.date = this.calculationForm.value['date'];
     this.dateFormat = this.date.split('T')[0];
+  }
 
+  calculations(){
     this.totalHours = this.decimalPipe.transform((this.hours + (this.minutes / 60)), '1.2-2');
-
     this.totalEarnings = parseFloat(this.decimalPipe.transform((this.earnings1 + this.earnings2 + this.earnings3), '1.2-2'));
     this.totalExpenses = parseFloat(this.decimalPipe.transform((this.petrol + this.tolls + this.other), '1.2-2'));
     this.profit = parseFloat(this.decimalPipe.transform((this.totalEarnings - this.totalExpenses), '1.2-2'));
     this.avgEarnings = parseFloat(this.decimalPipe.transform((this.totalEarnings / this.totalHours), '1.2-2'));
+  }
 
+  async showOnScreen() {
+    this.getValuesFromForm();
+    this.calculations();
     const alert = await this.alertController.create({
       header: 'Your Day Summary',
       message: 'Total Earnings: $' + this.totalEarnings + '<br/>' +
@@ -123,10 +126,11 @@ export class CalculatorPage implements OnInit {
     });
 
     await alert.present();
-
   }
 
   async addToList() {
+    this.getValuesFromForm();
+    this.calculations();
     console.log(this.kms);
     console.log(this.dateFormat);
     console.log(this.earnings1);
@@ -142,9 +146,13 @@ export class CalculatorPage implements OnInit {
       profit: this.profit
     };
 
-    this.db.updateAt(`items/${id}`, data);
-    this.presentToast("Item added!", true, 'bottom', 3000);
-    this.calculationForm.reset();
+    if(this.db.updateAt(`items/${id}`, data)){
+      this.presentToast("Item added!", true, 'bottom', 3000);
+      this.calculationForm.reset();
+    }
+    else{
+      this.presentToast("Please, try again!", true, 'bottom', 3000);
+    }
   }
 
   async showCalculations() {

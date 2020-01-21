@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ToastController, MenuController, AlertController } from '@ionic/angular';
+import { ToastController, MenuController, AlertController, LoadingController } from '@ionic/angular';
 import { DatabaseService } from '../database.service';
 
 @Component({
@@ -11,15 +11,18 @@ export class ItemsPage implements OnInit {
 
   items;
   item;
+  faCoffee;
 
   constructor(
     public alertController: AlertController,
     public menu: MenuController,
+    public loadingController: LoadingController,
     public db: DatabaseService,
     public toastController: ToastController,
   ) { }
 
   ngOnInit() {
+    this.presentLoading();
     const userId = this.db.userDetails().uid;
     this.items = this.db.collection$('items', ref =>
       ref
@@ -46,6 +49,16 @@ export class ItemsPage implements OnInit {
       duration: duration
     });
     toast.present();
+  }
+
+  async presentLoading() {
+    const loading = await this.loadingController.create({
+      message: 'Please wait...',
+      duration: 2000
+    });
+    await loading.present();
+    const { role, data } = await loading.onDidDismiss();
+    console.log('Loading dismissed!');
   }
 
 }

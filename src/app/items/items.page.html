@@ -9,17 +9,40 @@
 
 <ion-content>
 
-  <ion-item *ngFor="let item of items | async">
+  <ion-item lines="inset" *ngFor="let item of items | async">
     <ion-grid>
       <ion-row>
         <ion-col size="10">
-          <ion-label>Created at: {{item.createdAt}}</ion-label>
-          <ion-label>Hours worked: {{item.hours}}</ion-label>
-          <ion-label>Kms driven: {{item.kms}}kms</ion-label>
-          <ion-label>Total Earnings: ${{item.totalEarnings}}</ion-label>
-          <ion-label>Total Expenses: ${{item.totalExpenses}}</ion-label>
-          <ion-label>Profit: ${{item.profit}}</ion-label>
-          <ion-label>Avg hour: ${{item.avgEarnings}}</ion-label>
+          <ion-label>{{item.createdAt}}</ion-label>
+        </ion-col>
+        <ion-col size="2"></ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="10">
+          <ion-chip outline color="warning">
+            <ion-icon name="time"></ion-icon>
+            <ion-label>{{item.hours}} worked</ion-label>
+          </ion-chip>
+          <ion-chip outline color="primary">
+            <ion-icon name="car"></ion-icon>
+            <ion-label>{{item.kms}}kms driven</ion-label>
+          </ion-chip>
+          <ion-chip outline color="success">
+            <ion-icon name="cash"></ion-icon>
+            <ion-label>${{item.totalEarnings}} earnings</ion-label>
+          </ion-chip>
+          <ion-chip outline color="danger">
+            <ion-icon name="remove"></ion-icon>
+            <ion-label>${{item.totalExpenses}} expenses</ion-label>
+          </ion-chip>
+          <ion-chip outline color="secondary">
+            <ion-icon name="logo-usd"></ion-icon>
+            <ion-label>${{item.profit}} profit</ion-label>
+          </ion-chip>
+          <ion-chip outline color="tertiary">
+            <ion-icon name="hourglass"></ion-icon>
+            <ion-label>${{item.avgEarnings}} per hour</ion-label>
+          </ion-chip>
         </ion-col>
         <ion-col size="2">
           <ion-button color="danger" (click)="deleteItem(item)">

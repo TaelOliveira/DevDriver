@@ -13,7 +13,7 @@
     <ion-list>
       <h2>Date</h2>
       <ion-item>
-        <ion-datetime formControlName="date" name="date" placeholder="Select Date"></ion-datetime>
+        <ion-datetime displayFormat="DD/MM/YYYY" formControlName="date" name="date" placeholder="Select Date"></ion-datetime>
       </ion-item>
       <h2>Total Kms of the day</h2>
       <ion-item>
@@ -153,18 +153,17 @@
           </ng-container>
         </div>
       </ion-item>
-      <div class="ion-padding-top">
-        <ion-button [disabled]="!calculationForm.valid" expand="block" type="submit" color="success"
-          (click)="showOnScreen()">Show on screen</ion-button>
-      </div>
-      <div class="ion-padding-top">
-        <ion-button [disabled]="!calculationForm.valid" type="button" expand="block" color="primary"
-          (click)="addToList()">Add to List</ion-button>
-      </div>
-      <div class="ion-padding-top">
-        <ion-button expand="block" color="warning" (click)="showCalculations()">Show Calculations</ion-button>
-      </div>
     </ion-list>
   </form>
+
+  <div class="ion-padding-top">
+    <ion-button [disabled]="!calculationForm.valid" expand="block" type="submit" color="success" (click)="showOnScreen()">Show on screen</ion-button>
+  </div>
+  <div class="ion-padding-top">
+    <ion-button [disabled]="!calculationForm.valid" type="button" expand="block" color="primary" (click)="addToList()">Add to List</ion-button>
+  </div>
+  <div class="ion-padding-top">
+    <ion-button expand="block" color="warning" (click)="showCalculations()">Show Calculations</ion-button>
+  </div>
 
 </ion-content>

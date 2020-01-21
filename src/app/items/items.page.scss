@@ -2,9 +2,13 @@ ion-content {
     --ion-background-color: black;
 
     ion-item {
+        --border-color: white;
         ion-grid {
             ion-row {
                 align-items: center;
+                text-align: center;
+                font-size: larger;
+
                 ion-col {
                     ion-label {
                         color: white;

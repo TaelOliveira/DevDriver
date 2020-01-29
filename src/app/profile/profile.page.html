@@ -69,6 +69,66 @@
       </ion-grid>
     </ion-item>
 
+    <ion-item *ngFor="let user of user | async">
+      <ion-item>
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <ion-label class="myClass1 ion-text-start">Car</ion-label>
+            </ion-col>          
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-label class="myClass2 ion-text-wrap ion-text-start">{{user.carMake}}</ion-label>
+              <form [formGroup]="carMakeForm">
+                <ion-item (click)="getCarMake()">
+                  <ion-select class="myClass" formControlName="carMake" placeholder="Car Make">
+                    <ion-select-option *ngFor="let make of carMake | async">
+                      <p>{{make.carMake}}</p>
+                    </ion-select-option>
+                  </ion-select>
+                </ion-item>
+              </form>
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col>
+              <ion-label class="myClass2 ion-text-wrap ion-text-start">{{user.carModel}}</ion-label>
+              <form [formGroup]="carModelForm">
+                <ion-item (click)="getCarModel()">
+                  <ion-select class="myClass" formControlName="carModel" placeholder="Model">
+                    <ion-select-option *ngFor="let model of carModel | async">
+                      <p>{{model.name}}</p>
+                    </ion-select-option>
+                  </ion-select>
+                </ion-item>
+              </form>
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col>
+              <ion-label class="myClass2 ion-text-wrap ion-text-start">{{user.carYear}}</ion-label>
+              <form [formGroup]="carYearForm">
+                <ion-item (click)="getYear()">
+                  <ion-select class="myClass" formControlName="carYear" placeholder="Year">
+                    <ion-select-option *ngFor="let year of carYear | async">
+                      <p>{{year.carYear}}</p>
+                    </ion-select-option>
+                  </ion-select>
+                </ion-item>
+              </form>
+            </ion-col>
+          </ion-row>
+          
+          <ion-button [disabled]="!carMakeForm.valid || !carModelForm.valid || !carYearForm.valid" shape="round" color="success" (click)="updateCar()">Update</ion-button>
+          <ion-button shape="round" color="danger" (click)="cleanForm()">Reset</ion-button>
+
+        </ion-grid>
+      </ion-item>
+    </ion-item>
+
   </ion-list>
 
 </ion-content>

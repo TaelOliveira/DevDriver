@@ -16,6 +16,11 @@ export class AppComponent {
 
   public appPages = [
     {
+      title: 'Dashboard',
+      url: '/dashboard',
+      icon: 'analytics'
+    },
+    {
       title: 'Profile',
       url: '/profile',
       icon: 'person'
@@ -55,6 +60,7 @@ export class AppComponent {
     this.afAuth.authState.subscribe(( user ) => {
       if( user ) {
         this.appPages = [
+          {title: 'Dashboard' , url: '/dashboard', icon: 'analytics'},
           {title: 'Profile' , url: '/profile', icon: 'person'},
           {title: 'Calculator' , url: '/calculator', icon: 'calculator'},
           {title: 'List' , url: '/items', icon: 'list-box'},

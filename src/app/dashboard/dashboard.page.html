@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar color="dark">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Dashboard</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <ion-item lines="none" *ngFor="let user of user | async">
+    <ion-label>
+      <h1 class="ion-text-center ion-text-wrap">Welcome {{user.firstName}}!</h1>
+      <br>
+      <br>
+      <p class="ion-text-center">{{getDate | date:'EEEE dd MMMM yyyy'}}</p>
+      <p class="ion-text-center">{{user.carMake}} {{user.carModel}} {{user.carYear}}</p>
+    </ion-label>
+  </ion-item>
+
+  <ion-item lines="none" *ngFor="let user of user | async">
+    <ion-avatar>
+      <img [src]="user.carURL || 'assets/car.png'">
+    </ion-avatar>
+  </ion-item>
+
+</ion-content>

@@ -88,8 +88,16 @@ export class DatabaseService {
     return this.userProfile.update({ firstName, lastName });
   }
 
+  updateCar(carMake: string, carModel: string, carYear: string): Promise<any> {
+    return this.userProfile.update({ carMake, carModel, carYear });
+  }
+
   updatePhotoURL(photoURL: string){
     return this.userProfile.update({ photoURL });
+  }
+
+  updateCarURL(carURL: string){
+    return this.userProfile.update({ carURL });
   }
 
   updatePassword(newPassword: string, oldPassword: string): Promise<any> {

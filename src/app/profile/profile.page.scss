@@ -21,6 +21,17 @@ ion-content {
   color: red;
 }
 
+.myClass {
+  max-width: 100% !important;
+  display: flex;
+  flex-wrap: wrap;
+  text-align: center;
+  align-content: center;
+  word-wrap: break-word;
+  color: var(--ion-color-warning);
+  font-size: large;
+}
+
 .myClass1 {
   font-size: larger;
   color: red;

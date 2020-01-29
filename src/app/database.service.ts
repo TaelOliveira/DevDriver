@@ -100,6 +100,30 @@ export class DatabaseService {
     return this.userProfile.update({ carURL });
   }
 
+  updateTotalEarnings(totalEarnings){
+    return this.userProfile.update({ totalEarnings })
+  }
+
+  updateTotalExpenses(totalExpenses){
+    return this.userProfile.update({ totalExpenses })
+  }
+
+  updateTotalProfit(totalProfit){
+    return this.userProfile.update({ totalProfit })
+  }
+
+  updateTotalKms(totalKms){
+    return this.userProfile.update({ totalKms })
+  }
+
+  updateAvgEarnings(avgEarnings){
+    return this.userProfile.update({ avgEarnings })
+  }
+
+  updateTotalDays(totalDays){
+    return this.userProfile.update({ totalDays })
+  }
+
   updatePassword(newPassword: string, oldPassword: string): Promise<any> {
     const credential: firebase.auth.AuthCredential = firebase.auth.EmailAuthProvider.credential(
       this.currentUser.email,

@@ -1,7 +1,14 @@
 ion-content {
+    --ion-background-color: black;
 
     ion-item {
         margin-top: 10px;
+
+        ion-label {
+            h1 {
+                color: white;
+            }
+        }
 
         ion-avatar {
             margin: auto;
@@ -9,5 +16,21 @@ ion-content {
             width: 150px;
             height: 150px;
         }
+
+        ion-grid {
+            ion-row {
+                padding-top: 10px;
+                align-items: center;
+                text-align: center;
+
+                ion-col {
+                    ion-chip {
+                        font-size: 15px;
+                    }
+                }
+            }
+        }
     }
+
+
 }

@@ -25,4 +25,57 @@
     </ion-avatar>
   </ion-item>
 
+  <ion-item lines="none" *ngFor="let user of user | async">
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-chip outline color="success">
+            <ion-icon name="cash"></ion-icon>
+            <ion-label>Total Earnings: ${{user.totalEarnings.TotalEarnings | number:'1.2-2'}}</ion-label>
+          </ion-chip>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-chip outline color="danger">
+            <ion-icon name="remove"></ion-icon>
+            <ion-label>Total Expenses: ${{user.totalExpenses.TotalExpenses | number:'1.2-2'}}</ion-label>
+          </ion-chip>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-chip outline color="secondary">
+            <ion-icon name="logo-usd"></ion-icon>
+            <ion-label>Total Profit: ${{user.totalProfit.TotalProfit | number:'1.2-2'}}</ion-label>
+          </ion-chip>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-chip outline color="primary">
+            <ion-icon name="car"></ion-icon>
+            <ion-label>Total Kms: {{user.totalKms.TotalKms | number:'1.2-2'}} kms</ion-label>
+          </ion-chip>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-chip outline color="warning">
+            <ion-icon name="stats"></ion-icon>
+            <ion-label>Average earnings: ${{user.avgEarnings.AVG | number:'1.2-2'}}/day</ion-label>
+          </ion-chip>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-chip outline color="tertiary">
+            <ion-icon name="hourglass"></ion-icon>
+            <ion-label>Total Days: ${{user.totalDays}} days</ion-label>
+          </ion-chip>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-item>
+
 </ion-content>

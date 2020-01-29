@@ -42,7 +42,7 @@ export class LoginPage implements OnInit {
     this.auth.signIn(email, password)
       .then((response) => {
         this.signInForm.reset();
-        this.router.navigate(['/profile']);
+        this.router.navigate(['/dashboard']);
       })
       .catch((error) => {
         console.log(error)
